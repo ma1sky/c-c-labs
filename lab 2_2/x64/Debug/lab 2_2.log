@@ -1,0 +1,3 @@
+﻿  lab 2_2.cpp
+C:\Users\Артём\Documents\prog basics lab 2\lab 2_2\lab 2_2.cpp(14,12): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  lab 2_2.vcxproj -> C:\Users\Артём\Documents\prog basics lab 2\lab 2_2\x64\Debug\lab 2_2.exe
