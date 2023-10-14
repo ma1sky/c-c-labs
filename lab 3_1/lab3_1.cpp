@@ -66,21 +66,17 @@ int main()
     
     int term = 1;
     while (term) {
-        if (term == 1) {
-            initArr(A, n1);
-            initArr(B, n2);
+        initArr(A, n1);
+        initArr(B, n2);
 
-            printArr(A, n1);
-            int minA = findMin(A, n1);
-            cout << "Минимальный элемент первой части массива A: " << minA << '\n';
+        printArr(A, n1);
+        int minA = findMin(A, n1);
+        cout << "Минимальный элемент первой части массива A: " << minA << '\n';
 
-            printArr(B, n2);
-            int minB = findMin(B, n2);
-            cout << "Минимальный элемент первой части массива B: " << minB << '\n';
-        }
-        else {
-            break;
-        }
+        printArr(B, n2);
+        int minB = findMin(B, n2);
+        cout << "Минимальный элемент первой части массива B: " << minB << '\n';
+
         cout << "Продолжить выполнение программы?" << '\n';
         cin >> term;
     }
