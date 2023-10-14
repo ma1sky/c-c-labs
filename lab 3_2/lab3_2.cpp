@@ -37,6 +37,7 @@ int findMin(int Mat[n][m], int col)
         
         if (Mat[j][col] >= 0) {
             minM = Mat[j][col];
+            break;
         }
     }
     for (int j = rowDiv; j < m; j++) {
