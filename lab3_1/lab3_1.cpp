@@ -65,7 +65,6 @@ int main()
     int B[n2];
     
     int term = 1;
-    int count = 1;
     while (term) {
         if (term == 1) {
             initArr(A, n1);
