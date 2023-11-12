@@ -1,78 +1,60 @@
-﻿#include <iostream>
-#include <iomanip>
-#include <clocale>
-#include <ctime>
-
-using namespace std;
-
-const int n = 8;
-const int m = 8;
-
-void initMat(int Mat[n][m])
+﻿#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <locale.h>
+#define N 10
+// размер массива
+#define COL 5
+// число колонок массива на экране
+//____________________ область определения функций________
+// функция инициализации массива
+// генерация вещественных положительных чисел
+void initmas(double* p, int n)
 {
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < m; j++) {
-            Mat[i][j] = rand() % 100 - 19;
-        }
-    }
+	double* tp;
+	// рабочий указатель (локальная переменная)
+	for (tp = p; tp < (p + n); tp++)
+		*tp = rand() % 100 / 10.;
 }
-
-void printMat(int Mat[n][m])
+// функция печати массива
+void printmas(double* p, int n, int k)
 {
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < m; j++) {
-            cout.width(4);
-            cout << right << Mat[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-    cout << "\n";
+	int i;
+	for (i = 0; i < n; i++, p++)
+	{
+		printf("%8.2f", *p); // печать элемента массива
+		if ((i + 1) % k)
+			printf("\t");
+		// выбор разделителя
+		else
+			printf("\n");
+	}
+	printf("\n");
 }
-
-int findMin(int Mat[n][m], int col) 
+//
+функция вычисления суммы
+double summas(double* p, int n)
 {
-    int minM;
-    int rowDiv = int(m / 2);
-    for (int j = rowDiv; j < m; j++) {
-        
-        if (Mat[j][col] >= 0) {
-            minM = Mat[j][col];
-            break;
-        }
-    }
-    for (int j = rowDiv; j < m; j++) {
-        if (Mat[j][col] >= 0 && Mat[j][col] < minM) {
-            minM = Mat[j][col];
-        }
-    }
-    return minM;
+	double fs;
+	//сумма (локальная переменная)
+	double* tp;
+	// рабочий указатель (локальная переменная)
+	for (fs = 0, tp = p; tp < (p + n); tp++)
+		fs = fs + *tp; // суммирование массива
+	return fs;
+	// возврат суммы в вызывающую программу
 }
-
+//_________ конец области определения функций_______________
 int main()
-{
-    time_t k;
-    srand(time(&k));
-
-    setlocale(LC_ALL, "Rus");
-
-    int M[n][m];
-
-    int term = 1;
-
-    while (term) {
-        if (term == 1) {
-            initMat(M);
-            printMat(M);
-
-            for (int i = 0; i < m; i++) {
-                cout << findMin(M, i) << ' ';
-            }
-            cout << '\n';
-        }
-        else {
-            break;
-        }
-        cout << "Продолжить выполнение программы?" << '\n';
-        cin >> term;
-    }
+{//---------------------------------------- настройки
+	setlocale(LC_ALL, "Rus");
+	srand(time(0));
+	//------ область определений (выделение памяти)
+	double dig[N], s;
+	//----------------------------------------------------------------
+	initmas(dig, N);
+	printmas(dig, N, COL);
+	s = summas(dig, N); // вычисление суммы
+	printf("s=%f\n", s);
+	return 0;
 }
