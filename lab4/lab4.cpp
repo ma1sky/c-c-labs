@@ -58,7 +58,7 @@ void calcMaxMin(int* pMatr, int* pMaxMin) {
 		for (int j = 0; j < n - i; j++) {
 			if (*pMatr > max) max = *pMatr;
 			if (*pMatr < min) min = *pMatr;
-			if (j+1 == n - i) {
+			if (j + 1 == n - i) {
 				pMatr += i+1;
 			}
 			else {
